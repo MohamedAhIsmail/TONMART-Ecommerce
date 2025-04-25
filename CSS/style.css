@@ -594,6 +594,12 @@ nav .menu ul li a.active {
   transform: scale(1.1);
 }
 
+.product-card .product-image img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+
 .product-card .rating {
   font-size: 0.8rem;
   color: #fecb2f;
