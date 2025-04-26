@@ -692,14 +692,14 @@ nav .menu ul li a.active {
   color: #fff;
 }
 
-@media(max-width: 480px) {
+@media (max-width: 480px) {
   .product-card .btns .add-to-cart {
     padding: 7px;
-    font-size: .6rem;
+    font-size: 0.6rem;
   }
   .product-card .btns .wish {
     padding: 7px;
-    font-size: .6rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -773,7 +773,6 @@ footer .top-footer .container .box .icons a:hover {
 footer .top-footer .container .box ul li {
   position: relative;
 }
-
 
 footer .top-footer .container .box ul li a {
   transition: var(--transition);
