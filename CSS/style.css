@@ -553,7 +553,7 @@ nav .menu ul li a.active {
 }
 
 /* Start Product Card */
-.deals-slider {
+.products-slider {
   margin-bottom: 30px;
 }
 .mySwiper {
@@ -699,3 +699,4 @@ nav .menu ul li a.active {
     flex-direction: column;
   }
 }
+
