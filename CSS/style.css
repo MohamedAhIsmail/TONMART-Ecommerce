@@ -688,14 +688,16 @@ nav .menu ul li a.active {
 }
 
 /* Start Sale Banners */
-.sale-banners .banners {
+.sale-banners .banners, 
+.ads-banners .banners {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 
 @media (max-width: 768px) {
-  .sale-banners .banners {
+  .sale-banners .banners,
+  .ads-banners .banners {
     flex-direction: column;
   }
 }
