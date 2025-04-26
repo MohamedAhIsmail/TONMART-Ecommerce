@@ -209,3 +209,23 @@ function displayMobiles(product) {
   }
   mobilesContainer.innerHTML = item;
 }
+
+// To Top button feature
+
+let toTopBtn = document.querySelector(".to-top");
+console.log(toTopBtn);
+
+window.onscroll = function () {
+  if (window.scrollY > 600) {
+    toTopBtn.classList.add("show");
+  } else {
+    toTopBtn.classList.remove("show");
+  }
+};
+
+toTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});

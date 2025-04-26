@@ -826,3 +826,31 @@ footer .bottom-footer .copy-rights span {
     flex-direction: column;
   }
 }
+
+/* To Top Button */
+.to-top {
+  position: fixed;
+  right: -60px;
+  bottom: 20px;
+  background-color: var(--main-color);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: var(--white-color);
+  cursor: pointer;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.to-top:hover {
+  background-color: var(--hover-color);
+}
+
+.show {
+  display: flex;
+  right: 20px;
+  opacity: 1;
+}
