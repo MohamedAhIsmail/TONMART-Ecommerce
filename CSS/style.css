@@ -606,9 +606,14 @@ nav .menu ul li a.active {
 }
 
 .product-card .title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 10px 0;
   font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .product-card .title a {
@@ -687,6 +692,17 @@ nav .menu ul li a.active {
   color: #fff;
 }
 
+@media(max-width: 480px) {
+  .product-card .btns .add-to-cart {
+    padding: 7px;
+    font-size: .6rem;
+  }
+  .product-card .btns .wish {
+    padding: 7px;
+    font-size: .6rem;
+  }
+}
+
 /* Start Sale Banners */
 .sale-banners .banners,
 .ads-banners .banners {
@@ -703,6 +719,9 @@ nav .menu ul li a.active {
 }
 
 /* Start footer */
+footer {
+  margin-top: 50px;
+}
 footer .top-footer {
   background-color: #121416;
 }
@@ -755,7 +774,15 @@ footer .top-footer .container .box ul li {
   position: relative;
 }
 
-footer .top-footer .container .box ul li::before {
+
+footer .top-footer .container .box ul li a {
+  transition: var(--transition);
+  display: flex;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+footer .top-footer .container .box ul li a::before {
   position: absolute;
   content: "";
   border: 7px solid #efff;
@@ -763,12 +790,6 @@ footer .top-footer .container .box ul li::before {
   left: -15px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-footer .top-footer .container .box ul li a {
-  transition: var(--transition);
-  display: flex;
-  margin-bottom: 10px;
 }
 
 footer .top-footer .container .box ul li:hover a {

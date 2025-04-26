@@ -61,7 +61,7 @@ function displayHotProducts(product) {
           </div>
 
           <h3 class="title">
-            <a href="#">${product[i].name.split(" ").slice(0, 6).join(" ")}</a>
+            <a href="#">${product[i].name}</a>
           </h3>
 
           <div class="price">
@@ -104,7 +104,7 @@ function displayElectronics(product) {
           </div>
 
           <h3 class="title">
-            <a href="#">${product[i].name.split(" ").slice(0, 6).join(" ")}</a>
+            <a href="#">${product[i].name}</a>
           </h3>
 
           <div class="price">
@@ -146,7 +146,7 @@ function displayAppliances(product) {
           </div>
 
           <h3 class="title">
-            <a href="#">${product[i].name.split(" ").slice(0, 6).join(" ")}</a>
+            <a href="#">${product[i].name}</a>
           </h3>
 
           <div class="price">
@@ -188,7 +188,7 @@ function displayMobiles(product) {
           </div>
 
           <h3 class="title">
-            <a href="#">${product[i].name.split(" ").slice(0, 6).join(" ")}</a>
+            <a href="#">${product[i].name}</a>
           </h3>
 
           <div class="price">
