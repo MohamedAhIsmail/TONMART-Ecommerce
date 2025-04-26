@@ -688,7 +688,7 @@ nav .menu ul li a.active {
 }
 
 /* Start Sale Banners */
-.sale-banners .banners, 
+.sale-banners .banners,
 .ads-banners .banners {
   display: flex;
   justify-content: space-between;
@@ -702,5 +702,127 @@ nav .menu ul li a.active {
   }
 }
 
+/* Start footer */
+footer .top-footer {
+  background-color: #121416;
+}
 
+footer .top-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 0;
+}
 
+footer .top-footer .container .box {
+  width: 23%;
+}
+
+footer .top-footer .container .box img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+footer .top-footer .container .box .desc {
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+footer .top-footer .container .box .icons {
+  display: flex;
+  gap: 10px;
+}
+
+footer .top-footer .container .box .icons a {
+  transition: var(--transition);
+  color: var(--white-color);
+  padding: 10px;
+  background-color: var(--main-color);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+footer .top-footer .container .box .icons a:hover {
+  transform: translateY(-10px);
+}
+
+footer .top-footer .container .box ul li {
+  position: relative;
+}
+
+footer .top-footer .container .box ul li::before {
+  position: absolute;
+  content: "";
+  border: 7px solid #efff;
+  border-color: transparent transparent transparent var(--main-color);
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+footer .top-footer .container .box ul li a {
+  transition: var(--transition);
+  display: flex;
+  margin-bottom: 10px;
+}
+
+footer .top-footer .container .box ul li:hover a {
+  margin-left: 10px;
+  color: var(--white-color);
+}
+
+footer .top-footer .container .box ul li a {
+  color: var(--text-color);
+}
+
+@media (max-width: 1100px) {
+  footer .top-footer .container {
+    gap: 30px;
+  }
+  footer .top-footer .container .box {
+    width: 48%;
+  }
+}
+@media (max-width: 768px) {
+  footer .top-footer .container .box {
+    width: 100%;
+  }
+}
+
+footer h4 {
+  color: var(--bg-color);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+footer .bottom-footer {
+  background-color: #1d1f22;
+}
+
+footer .bottom-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px 10px;
+}
+
+footer .bottom-footer .copy-rights {
+  color: var(--bg-color);
+}
+
+footer .bottom-footer .copy-rights span {
+  color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+  footer .bottom-footer .container {
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+  }
+}
