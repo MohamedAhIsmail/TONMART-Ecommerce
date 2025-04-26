@@ -686,3 +686,16 @@ nav .menu ul li a.active {
   background-color: var(--main-color);
   color: #fff;
 }
+
+/* Start Sale Banners */
+.sale-banners .banners {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .sale-banners .banners {
+    flex-direction: column;
+  }
+}
