@@ -119,6 +119,7 @@ function increaseQuantity(id) {
   saveCartData();
   subTotal();
   showCartItems();
+  calcItemsInCart();
 }
 
 function decreaseQuantity(id) {
@@ -129,4 +130,16 @@ function decreaseQuantity(id) {
   saveCartData();
   subTotal();
   showCartItems();
+  calcItemsInCart();
 }
+
+function calcItemsInCart() {
+  let allItemsInCart = 0;
+  for (let i = 0; i < cart.length; i++) {
+    allItemsInCart += cart[i].quantity;
+  }
+
+  cartCount.innerHTML = `Cart Items: ${allItemsInCart}`;
+}
+
+calcItemsInCart();
