@@ -156,8 +156,11 @@ function updateCartButtons() {
     let isInCart = cart.some((item) => item.id === id);
     if (isInCart) {
       cartButton.classList.add("active");
+      cartButton.innerHTML = "Item in cart"
     } else {
       cartButton.classList.remove("active");
+      cartButton.innerHTML = "Add To Cart"
+
     }
   });
 }
