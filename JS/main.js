@@ -26,6 +26,7 @@ async function getProducts() {
     displayCategoryProducts(products, electronicsContainer, "electronics");
     displayCategoryProducts(products, appliancesContainer, "appliances");
     displayCategoryProducts(products, mobilesContainer, "mobiles");
+    updateCartButtons();
   } catch (error) {
     console.error("Failed to fetch products:", error);
   }
@@ -66,14 +67,18 @@ function displayHotProducts(product) {
           </div>
 
           <div class="btns">
-            <button class="add-to-cart" onclick="addToCart(${product[i].id})">
+            <button class="add-to-cart" data-cart-id="${
+              product[i].id
+            }" onclick="addToCart(${product[i].id})">
               <i class="fa-solid fa-cart-shopping"></i>Add To Cart
             </button>
               <button class="${
                 wishList.some((item) => item.id === product[i].id)
                   ? "selected"
                   : "wish"
-              }" data-id="${product[i].id}" onclick="addToWish(${product[i].id})">
+              }" data-id="${product[i].id}" onclick="addToWish(${
+        product[i].id
+      })">
 
               <i class="fa-regular fa-heart"></i>
             </button>
@@ -114,7 +119,9 @@ function displayCategoryProducts(product, container, category) {
           </div>
 
           <div class="btns">
-            <button class="add-to-cart" onclick="addToCart(${product[i].id})">
+            <button class="add-to-cart" data-cart-id="${
+              product[i].id
+            }" onclick="addToCart(${product[i].id})">
               <i class="fa-solid fa-cart-shopping"></i>Add To Cart
             </button>
             <button class="${

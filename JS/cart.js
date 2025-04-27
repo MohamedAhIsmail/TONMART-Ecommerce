@@ -39,6 +39,8 @@ function addToCart(id) {
   updateCartCounters();
   showCartItems();
   subTotal();
+
+  updateCartButtons();
 }
 
 function saveCartData() {
@@ -85,6 +87,7 @@ function showCartItems() {
 }
 
 showCartItems();
+updateCartButtons();
 subTotal();
 
 function removeFromCart(id) {
@@ -93,6 +96,8 @@ function removeFromCart(id) {
   saveCartData();
   updateCartCounters();
   subTotal();
+
+  updateCartButtons();
 }
 
 function subTotal() {
@@ -143,3 +148,16 @@ function calcItemsInCart() {
 }
 
 calcItemsInCart();
+
+function updateCartButtons() {
+  let cartButtons = document.querySelectorAll(".add-to-cart");
+  cartButtons.forEach((cartButton) => {
+    let id = Number(cartButton.getAttribute("data-cart-id"));
+    let isInCart = cart.some((item) => item.id === id);
+    if (isInCart) {
+      cartButton.classList.add("active");
+    } else {
+      cartButton.classList.remove("active");
+    }
+  });
+}
