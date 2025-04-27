@@ -1,11 +1,10 @@
-
 let cart = [];
-
 let total;
 
 if (window.localStorage.getItem("cartList")) {
   cart = JSON.parse(window.localStorage.getItem("cartList"));
 }
+
 
 
 let closeCart = document.getElementById("close-cart");
@@ -29,10 +28,7 @@ closeCart.addEventListener("click", closeCartSide);
 cartBtn.addEventListener("click", openCart);
 shopMoreCart.addEventListener("click", closeCartSide);
 
-
-
 // Cart Functions
-
 function addToCart(id) {
   let product = products.find((item) => item.id == id);
   let isExist = cart.some((item) => item.id === id);
@@ -87,6 +83,7 @@ function showCartItems() {
 }
 
 showCartItems();
+subTotal()
 
 function removeFromCart(id) {
   cart = cart.filter((item) => item.id !== id);
@@ -119,3 +116,4 @@ console.log(increase, decrease, quant);
 increase.addEventListener("click", () => {
   console.log("increased");
 });
+

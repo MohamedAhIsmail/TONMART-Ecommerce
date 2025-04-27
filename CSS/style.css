@@ -851,6 +851,7 @@ footer .bottom-footer .copy-rights span {
 /* To Top Button */
 .to-top {
   position: fixed;
+  z-index: 1000;
   right: -60px;
   bottom: 20px;
   background-color: var(--main-color);
