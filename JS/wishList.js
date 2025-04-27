@@ -61,23 +61,35 @@ function addToWish(id) {
 
   if (!isExist) {
     wishList.push(product);
-
-    saveWishListData();
-    displayHotProducts(products);
-    displayCategoryProducts(products, electronicsContainer, "electronics");
-    displayCategoryProducts(products, appliancesContainer, "appliances");
-    displayCategoryProducts(products, mobilesContainer, "mobiles");
-
-    showWishListItems();
-    updateWishCounter();
+  } else {
+    wishList = wishList.filter((item) => item.id !== id);
   }
+
+  saveWishListData();
+
+  let wishButtons = document.querySelectorAll(`button[data-id="${id}"]`);
+  wishButtons.forEach((wishButton) => {
+    wishButton.classList.toggle("selected", !isExist);
+    wishButton.classList.toggle("wish", isExist);
+  });
+
+  showWishListItems();
+  updateWishCounter();
 }
 
 function removeFromWish(id) {
   wishList = wishList.filter((product) => product.id != id);
+
+  saveWishListData();
+
   showWishListItems();
   updateWishCounter();
-  saveWishListData();
+
+  let wishButtons = document.querySelectorAll(`button[data-id="${id}"]`);
+  wishButtons.forEach((wishButton) => {
+    wishButton.classList.remove("selected");
+    wishButton.classList.add("wish");
+  });
 }
 
 function updateWishCounter() {

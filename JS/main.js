@@ -73,7 +73,7 @@ function displayHotProducts(product) {
                 wishList.some((item) => item.id === product[i].id)
                   ? "selected"
                   : "wish"
-              }" onclick="addToWish(${product[i].id})">
+              }" data-id="${product[i].id}" onclick="addToWish(${product[i].id})">
 
               <i class="fa-regular fa-heart"></i>
             </button>
@@ -121,7 +121,7 @@ function displayCategoryProducts(product, container, category) {
               wishList.some((item) => item.id === product[i].id)
                 ? "selected"
                 : "wish"
-            }" onclick="addToWish(${product[i].id})">
+            }" data-id="${product[i].id}" onclick="addToWish(${product[i].id})">
 
               <i class="fa-regular fa-heart"></i>
             </button>
