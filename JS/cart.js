@@ -5,8 +5,6 @@ if (window.localStorage.getItem("cartList")) {
   cart = JSON.parse(window.localStorage.getItem("cartList"));
 }
 
-
-
 let closeCart = document.getElementById("close-cart");
 let cartCount = document.querySelector(".cart-list h3");
 let cartList = document.querySelector(".cart-list .list");
@@ -63,11 +61,15 @@ function showCartItems() {
             <h4 class="title">${cart[i].name}</h4>
             <div class="controller">
               <div class="quantity">
-                <button class="decrease">-</button>
+                <button class="decrease" onclick="decreaseQuantity(${
+                  cart[i].id
+                })" ${cart[i].quantity === 1 ? "disabled" : ""}>-</button>
                 <div class="quant">${cart[i].quantity}</div>
-                <button class="increase">+</button>
+                <button class="increase" onclick="increaseQuantity(${
+                  cart[i].id
+                })">+</button>
               </div>
-              <div class="price">$${cart[i].price}</div>
+              <div class="price">$${cart[i].price * cart[i].quantity}</div>
             </div>
           </div>
           <button class="delete" onclick="removeFromCart(${cart[i].id})">
@@ -83,7 +85,7 @@ function showCartItems() {
 }
 
 showCartItems();
-subTotal()
+subTotal();
 
 function removeFromCart(id) {
   cart = cart.filter((item) => item.id !== id);
@@ -98,7 +100,6 @@ function subTotal() {
   for (let i = 0; i < cart.length; i++) {
     total += cart[i].price * cart[i].quantity;
   }
-  console.log(total);
 
   cartTotal.innerHTML = `$${total}`;
 }
@@ -106,14 +107,26 @@ function subTotal() {
 let increase = document.querySelector(".increase");
 let decrease = document.querySelector(".decrease");
 let quant = document.querySelector(".quant");
+let itemPrice = document.querySelector(".item .price");
 
-console.log(increase, decrease, quant);
+function increaseQuantity(id) {
+  let cartItem = cart.find((item) => item.id === id);
 
-// function updateQuantity () {
+  if (cartItem) {
+    cartItem.quantity += 1;
+  }
 
-// }
+  saveCartData();
+  subTotal();
+  showCartItems();
+}
 
-increase.addEventListener("click", () => {
-  console.log("increased");
-});
-
+function decreaseQuantity(id) {
+  let cartItem = cart.find((item) => item.id === id);
+  if (cartItem.quantity > 1) {
+    cartItem.quantity -= 1;
+  }
+  saveCartData();
+  subTotal();
+  showCartItems();
+}
