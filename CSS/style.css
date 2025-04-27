@@ -878,7 +878,8 @@ footer .bottom-footer .copy-rights span {
 
 /* Start Wish List */
 
-.wish-list {
+.wish-list,
+.cart-list {
   background-color: #fff;
   position: fixed;
   top: 0;
@@ -893,7 +894,12 @@ footer .bottom-footer .copy-rights span {
   transform: translateX(350px);
 }
 
-.wish-list .top {
+.cart-list {
+  z-index: 1100;
+}
+
+.wish-list .top,
+.cart-list .top {
   padding: 20px;
   display: flex;
   align-items: center;
@@ -902,7 +908,8 @@ footer .bottom-footer .copy-rights span {
   border-bottom: 1px solid var(--border-color);
 }
 
-.wish-list .top .close-wish {
+.wish-list .top .close-wish,
+.cart-list .top .close-cart {
   width: 40px;
   height: 40px;
   border: 1px solid var(--border-color);
@@ -911,9 +918,17 @@ footer .bottom-footer .copy-rights span {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: var(--transition);
 }
 
-.wish-list .list {
+.wish-list .top .close-wish:hover,
+.cart-list .top .close-cart:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.wish-list .list,
+.cart-list .list {
   padding: 20px;
   overflow-y: auto;
 }
@@ -942,6 +957,7 @@ footer .bottom-footer .copy-rights span {
   font-size: 1.4rem;
   transition: var(--transition);
   cursor: pointer;
+  color: var(--text-color);
 }
 
 .list .item .delete:hover {
@@ -969,14 +985,51 @@ footer .bottom-footer .copy-rights span {
   justify-content: center;
 }
 
-.shop-more {
+.cart-list .foot {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  justify-content: space-between;
+}
+
+.cart-list .foot .subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.cart-list .foot .subtotal .total {
+  color: var(--main-color);
+}
+
+.cart-list .foot .btns {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.shop-more,
+.checkout {
   padding: 10px 20px;
   font-size: 1rem;
-  border: 1px solid var(--main-color);
+  border: 2px solid var(--main-color);
   background-color: transparent;
   border-radius: 4px;
   cursor: pointer;
   transition: var(--transition);
+}
+
+.checkout {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.checkout:hover {
+  background-color: var(--hover-color);
 }
 
 .shop-more:hover {
