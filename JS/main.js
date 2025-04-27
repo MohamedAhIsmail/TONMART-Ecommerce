@@ -14,6 +14,8 @@ let products = [];
 let wishList = [];
 let cart = [];
 
+let total;
+
 if (window.localStorage.getItem("wishList")) {
   wishList = JSON.parse(window.localStorage.getItem("wishList"));
 }
@@ -32,7 +34,6 @@ async function getProducts() {
     }
 
     products = await response.json();
-    console.log(products);
 
     displayHotProducts(products);
     displayCategoryProducts(products, electronicsContainer, "electronics");
@@ -284,11 +285,11 @@ function addToCart(id) {
 
   if (!cart.includes(product)) {
     cart.push(product);
-    console.log(cart);
   }
   saveCartData();
   updateCartCounters();
   showCartItems();
+  subTotal()
 }
 
 function saveCartData() {
@@ -327,8 +328,19 @@ showCartItems();
 
 function removeFromCart(id) {
   cart = cart.filter((item) => item.id !== id);
-  console.log(cart);
   showCartItems();
   saveCartData();
   updateCartCounters();
+  subTotal()
+}
+
+
+function subTotal() {
+  total = 0
+  for (let i = 0; i < cart.length; i++) {
+    total += cart[i].price;
+  }
+  console.log(total);
+
+  cartTotal.innerHTML = `$${total}`
 }
