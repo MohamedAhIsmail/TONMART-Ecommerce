@@ -11,11 +11,15 @@ let mobilesContainer = document.getElementById("swiper-mobiles");
 let wishCounter = document.querySelector(".wish-count");
 
 let products = [];
-
 let wishList = [];
+let cart = [];
 
 if (window.localStorage.getItem("wishList")) {
   wishList = JSON.parse(window.localStorage.getItem("wishList"));
+}
+
+if (window.localStorage.getItem("cartList")) {
+  cart = JSON.parse(window.localStorage.getItem("cartList"));
 }
 
 // fetch products and display categories in home
@@ -74,7 +78,7 @@ function displayHotProducts(product) {
           </div>
 
           <div class="btns">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart(${product[i].id})">
               <i class="fa-solid fa-cart-shopping"></i>Add To Cart
             </button>
               <button class="${
@@ -122,7 +126,7 @@ function displayCategoryProducts(product, container, category) {
           </div>
 
           <div class="btns">
-            <button class="add-to-cart">
+            <button class="add-to-cart" onclick="addToCart(${product[i].id})">
               <i class="fa-solid fa-cart-shopping"></i>Add To Cart
             </button>
             <button class="${
@@ -261,7 +265,6 @@ let cartBtn = document.getElementById("cart");
 let topCartCount = document.querySelector(".cart-count");
 let cartListSide = document.querySelector(".cart-list");
 
-
 function closeCartSide() {
   cartListSide.style.setProperty("transform", "translateX(350px)");
 }
@@ -273,3 +276,59 @@ function openCart() {
 closeCart.addEventListener("click", closeCartSide);
 cartBtn.addEventListener("click", openCart);
 shopMoreCart.addEventListener("click", closeCartSide);
+
+// Cart Functions
+
+function addToCart(id) {
+  let product = products.find((item) => item.id == id);
+
+  if (!cart.includes(product)) {
+    cart.push(product);
+    console.log(cart);
+  }
+  saveCartData();
+  updateCartCounters();
+  showCartItems();
+}
+
+function saveCartData() {
+  window.localStorage.setItem("cartList", JSON.stringify(cart));
+}
+
+function updateCartCounters() {
+  cartCount.innerHTML = `Cart Items: ${cart.length}`;
+  topCartCount.innerHTML = cart.length;
+}
+
+function showCartItems() {
+  let cartItem = ``;
+
+  for (let i = 0; i < cart.length; i++) {
+    cartItem += `
+        <div class="item">
+          <img src="${cart[i].img}" alt="${cart[i].name}" />
+          <div>
+            <h4 class="title">
+            ${cart[i].name}
+            </h4>
+            <div class="price">$${cart[i].price}</div>
+          </div>
+          <button class="delete" onclick="removeFromCart(${cart[i].id})"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+    `;
+  }
+
+  cartList.innerHTML = cartItem;
+  topCartCount.innerHTML = cart.length;
+  cartCount.innerHTML = `Cart Items: ${cart.length}`;
+}
+
+showCartItems();
+
+function removeFromCart(id) {
+  cart = cart.filter((item) => item.id !== id);
+  console.log(cart);
+  showCartItems();
+  saveCartData();
+  updateCartCounters();
+}
