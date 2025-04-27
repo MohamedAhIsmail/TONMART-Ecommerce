@@ -952,6 +952,36 @@ footer .bottom-footer .copy-rights span {
   margin-bottom: 10px;
 }
 
+.list .item .controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.list .quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.list .quantity button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.list .quantity button:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+
 .list .item .delete {
   background-color: transparent;
   font-size: 1.4rem;
