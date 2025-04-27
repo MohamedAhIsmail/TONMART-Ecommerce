@@ -9,6 +9,14 @@ let electronicsContainer = document.getElementById("swiper-electronics");
 let appliancesContainer = document.getElementById("swiper-appliances");
 let mobilesContainer = document.getElementById("swiper-mobiles");
 
+let products = [];
+
+let wishList = [];
+
+if (window.localStorage.getItem("wishList")) {
+  wishList = JSON.parse(window.localStorage.getItem("wishList"));
+}
+
 // console.log(electronicsContainer);
 
 // clicable Menus Functions
@@ -33,14 +41,13 @@ async function getProducts() {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    let products = await response.json();
+    products = await response.json();
     console.log(products);
 
     displayHotProducts(products);
     displayCategoryProducts(products, electronicsContainer, "electronics");
     displayCategoryProducts(products, appliancesContainer, "appliances");
     displayCategoryProducts(products, mobilesContainer, "mobiles");
-    
   } catch (error) {
     console.error("Failed to fetch products:", error);
   }
@@ -84,9 +91,15 @@ function displayHotProducts(product) {
             <button class="add-to-cart">
               <i class="fa-solid fa-cart-shopping"></i>Add To Cart
             </button>
-            <button class="wish">
+              <button class="${
+                wishList.some((item) => item.id === product[i].id)
+                  ? "selected"
+                  : "wish"
+              }" onclick="addToWish(${product[i].id})">
+
               <i class="fa-regular fa-heart"></i>
             </button>
+
           </div>
       </div>
       `;
@@ -126,7 +139,12 @@ function displayCategoryProducts(product, container, category) {
             <button class="add-to-cart">
               <i class="fa-solid fa-cart-shopping"></i>Add To Cart
             </button>
-            <button class="wish">
+            <button class="${
+              wishList.some((item) => item.id === product[i].id)
+                ? "selected"
+                : "wish"
+            }" onclick="addToWish(${product[i].id})">
+
               <i class="fa-regular fa-heart"></i>
             </button>
           </div>
@@ -139,7 +157,6 @@ function displayCategoryProducts(product, container, category) {
 
 // To Top button feature
 let toTopBtn = document.querySelector(".to-top");
-console.log(toTopBtn);
 
 window.onscroll = function () {
   if (window.scrollY > 600) {
@@ -155,3 +172,41 @@ toTopBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
+//wish list
+function addToWish(id) {
+  let product = products.find((item) => item.id === id);
+
+  if (!wishList.includes(product)) {
+    wishList.push(product);
+    saveWishListData();
+    displayHotProducts(products);
+    displayCategoryProducts(products, electronicsContainer, "electronics");
+    displayCategoryProducts(products, appliancesContainer, "appliances");
+    displayCategoryProducts(products, mobilesContainer, "mobiles");
+  }
+}
+
+function saveWishListData() {
+  window.localStorage.setItem("wishList", JSON.stringify(wishList));
+}
+
+console.log("wishlist", wishList);
+
+// wish list side menu
+let closeWishBtn = document.getElementById("close-wish");
+let wishListSide = document.querySelector(".wish-list");
+let shopMore = document.querySelector(".shop-more");
+let wishHeart = document.getElementById("wish");
+
+function closeWishList() {
+  wishListSide.style.setProperty("transform", "translateX(350px)");
+}
+
+function openWishList() {
+  wishListSide.style.setProperty("transform", "translateX(0)");
+}
+
+wishHeart.addEventListener("click", openWishList);
+closeWishBtn.addEventListener("click", closeWishList);
+shopMore.addEventListener("click", closeWishList);

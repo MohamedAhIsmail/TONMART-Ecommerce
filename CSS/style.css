@@ -692,6 +692,13 @@ nav .menu ul li a.active {
   color: #fff;
 }
 
+.selected {
+  background-color: var(--hover-color);
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  color: #fff;
+}
+
 @media (max-width: 480px) {
   .product-card .btns .add-to-cart {
     padding: 7px;
@@ -873,4 +880,112 @@ footer .bottom-footer .copy-rights span {
   display: flex;
   right: 20px;
   opacity: 1;
+}
+
+/* Start Wish List */
+
+.wish-list {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 350px;
+  z-index: 1000;
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+  transform: translateX(350px);
+}
+
+.wish-list .top {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.wish-list .top .close-wish {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-color);
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.wish-list .list {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.list .item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  gap: 10px;
+}
+
+.list h4 {
+  font-weight: normal;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.list .item .delete {
+  background-color: transparent;
+  font-size: 1.4rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.list .item .delete:hover {
+  color: var(--sale-color);
+}
+
+.list .item img {
+  width: 100%;
+  max-width: 80px;
+}
+
+.list .item .price {
+  color: var(--text-color);
+}
+
+.list .item:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.wish-list .foot {
+  padding: 20px;
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+}
+
+.shop-more {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 1px solid var(--main-color);
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.shop-more:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
 }
