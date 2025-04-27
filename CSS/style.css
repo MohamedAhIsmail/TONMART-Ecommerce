@@ -46,10 +46,6 @@ button {
   outline: none;
 }
 
-/* body {
-  background-color: #eee;
-} */
-
 .container {
   width: 90%;
   max-width: 1350px;
@@ -245,7 +241,6 @@ nav .categories div {
   z-index: 1000;
   display: none;
   transition: var(--transition);
-  /* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -358,7 +353,6 @@ nav .menu ul li a.active {
 
 .toggled {
   display: flex !important;
-  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
 }
 
 /* Start Slider */
