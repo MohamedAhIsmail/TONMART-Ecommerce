@@ -11,6 +11,7 @@ let mobilesContainer = document.getElementById("swiper-mobiles");
 
 let products = [];
 
+
 // fetch products and display categories in home
 async function getProducts() {
   try {

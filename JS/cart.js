@@ -7,11 +7,11 @@ if (window.localStorage.getItem("cartList")) {
 
 let closeCart = document.getElementById("close-cart");
 let cartCount = document.querySelector(".cart-list h3");
+let topCartCount = document.querySelector(".cart-count");
 let cartList = document.querySelector(".cart-list .list");
 let cartTotal = document.querySelector(".cart-list .total");
 let shopMoreCart = document.querySelector(".cart-list .btns .shop-more");
 let cartBtn = document.getElementById("cart");
-let topCartCount = document.querySelector(".cart-count");
 let cartListSide = document.querySelector(".cart-list");
 
 function closeCartSide() {
@@ -39,7 +39,6 @@ function addToCart(id) {
   updateCartCounters();
   showCartItems();
   subTotal();
-
   updateCartButtons();
 }
 
@@ -96,7 +95,6 @@ function removeFromCart(id) {
   saveCartData();
   updateCartCounters();
   subTotal();
-
   updateCartButtons();
 }
 
@@ -156,11 +154,10 @@ function updateCartButtons() {
     let isInCart = cart.some((item) => item.id === id);
     if (isInCart) {
       cartButton.classList.add("active");
-      cartButton.innerHTML = "Item in cart"
+      cartButton.innerHTML = "Item in cart";
     } else {
       cartButton.classList.remove("active");
-      cartButton.innerHTML = "Add To Cart"
-
+      cartButton.innerHTML = "Add To Cart";
     }
   });
 }
