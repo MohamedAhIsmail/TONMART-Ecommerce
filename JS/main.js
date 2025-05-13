@@ -11,7 +11,6 @@ let mobilesContainer = document.getElementById("swiper-mobiles");
 
 let products = [];
 
-
 // fetch products and display categories in home
 async function getProducts() {
   try {
@@ -171,3 +170,11 @@ toTopBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
+// Update current year automatic
+
+let date = new Date();
+
+let copyRightDiv = document.querySelector(".copy-rights");
+
+copyRightDiv.innerHTML = `All Rights Reserved ${date.getFullYear()} &copy; <span>TONMART</span>`;
